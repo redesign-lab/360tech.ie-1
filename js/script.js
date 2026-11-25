@@ -18,3 +18,9 @@ document.addEventListener('keydown', (event) => {
     menuButton.focus();
   }
 });
+// Original partner marks are hosted by the source site; retain the readable name if unavailable.
+document.querySelectorAll('.partner-tile img').forEach((image) => {
+  const hideUnavailable = () => image.classList.add('image-unavailable');
+  image.addEventListener('error', hideUnavailable);
+  if (image.complete && image.naturalWidth === 0) hideUnavailable();
+});
